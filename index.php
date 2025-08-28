@@ -12,9 +12,16 @@
 
     try{
         $db = new SQLite3($db_file);
+        $student_name = $_POST['student_name'];
+
+        $stmt = $db->prepare("INSERT INTO students (name) VALUES (:name)");
+        $stmt->bindValue(":name", $student_name, SQLITE3_TEXT);
+        $stmt->execute();
+
+        echo "<p>Student " . $student_name . " added succesfully! </p>";
 
     } catch (Exception $e){
-
+        echo "<p style='color: red;'>Error: " . $e->getMessage() . "</p>";
     } finally {
         if(isset($db)){
             $db->close();

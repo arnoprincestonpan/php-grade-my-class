@@ -12,6 +12,7 @@
 
     try{
         $db = new SQLite3($db_file);
+
     } catch (Exception $e){
 
     } finally {
@@ -20,5 +21,11 @@
         }
     }
     ?>
+
+    <form method="POST">
+        <label for="student_name">Student Name:</label>
+        <input type="text" id="student_name" name="student_name" required>
+        <button type="submit">Add Student</button>
+    </form>
 </body>
 </html>
